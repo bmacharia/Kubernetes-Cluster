@@ -12,7 +12,6 @@ spec:
       labels:
         app: linkding
     spec:
-
       securityContext:
         fsGroup: 33 # www-data group
         runAsUser: 33 # www-data user ID
@@ -24,16 +23,24 @@ spec:
           ports:
             - containerPort: 9090
 
+          envFrom:
+            - configMapRef:
+                name: linkding-configmap
+            - secretRef:
+                name: linkding-container-env
+
+            
+
           securityContext:
             allowPrivilegeEscalation: false
 
           volumeMounts:
-            - name: linkding-data
-              mountPath: /etc/linkding/data
-      volumes:
-        - name: linkding-data
-          persistentVolumeClaim:
-            claimName: linkding-data-pvc
+          - name: linkding-data
+            mountPath: /etc/linkding/data
+    volumes:
+      - name: linkding-data
+        persistentVolumeClaim:
+          claimName: linkding-data-pvc
             
 
             
