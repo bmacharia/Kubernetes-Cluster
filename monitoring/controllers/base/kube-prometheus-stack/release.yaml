@@ -33,9 +33,12 @@ spec:
         ingressClassName: traefik
         hosts:
           - grs.airmanbabu.net
-        paths:
-          - /
-        tls: []
+    
+        tls: 
+          - secretName: grafana-tls-secret
+            hosts:
+              - grs.airmanbabu.net
+              
         # tls:
         #   - secretName: grafana-tls-secret
         #     hosts:

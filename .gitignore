@@ -1,1 +1,4 @@
 *.md
+age.agekey
+tls.crt
+tls.key
