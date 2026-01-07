@@ -33,9 +33,9 @@ spec:
 
         ingressClassName: traefik
 
-        annotations: {}
+      
 
-        labels: {}
+        
 
     ## Override ingress to a different defined port on the service
     # servicePort: 8081
